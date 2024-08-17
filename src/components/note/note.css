@@ -1,0 +1,84 @@
+.note{
+    display: flex;
+    flex-direction: column;
+}
+
+.note .header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.note .header h1{
+    padding: 0;
+    margin: 0;
+}
+
+.note button{
+    cursor: pointer;
+}
+
+.note .header button{
+    font-size: 1.5rem;
+    height: 100%;
+    margin-top: 2px;
+    margin-left: 15px;
+    background: transparent;
+    border: none;
+}
+
+.note .notes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.note .notes .noteHolder h3{
+    margin: 0;
+}
+
+.note .notes .noteHolder{
+    box-shadow: 0 0 10px black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    &:hover{
+        box-shadow: 0 0 20px black;
+    }
+}
+
+.note .titleHolder button{
+    background: none;
+    border: none;
+    color: blue;
+    font-size: 1.2rem;
+    &:hover{
+        color: red;
+    }
+}
+
+.note .titleHolder{
+    display: flex;
+    justify-content: space-between;
+}
+
+.note .noteHolder form{
+    display: flex;
+    flex-direction: column;
+}
+
+.note #title{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.note form{
+    position: relative;
+    height: 100%;
+}
+
+.note #deadline{
+    position: absolute;
+    bottom: 0;
+}

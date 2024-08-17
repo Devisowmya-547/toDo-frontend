@@ -1,0 +1,84 @@
+.task{
+    display: flex;
+    flex-direction: column;
+}
+
+.task .header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.task .header h1{
+    padding: 0;
+    margin: 0;
+}
+
+.task button{
+    cursor: pointer;
+}
+
+.task .header button{
+    font-size: 1.5rem;
+    height: 100%;
+    margin-top: 2px;
+    margin-left: 15px;
+    background: transparent;
+    border: none;
+}
+
+.task .notes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.task .notes .noteHolder h3{
+    margin: 0;
+}
+
+.task .notes .noteHolder{
+    box-shadow: 0 0 10px black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    &:hover{
+        box-shadow: 0 0 20px black;
+    }
+}
+
+.task .titleHolder button{
+    background: none;
+    border: none;
+    color: blue;
+    font-size: 1.2rem;
+    &:hover{
+        color: red;
+    }
+}
+
+.task .titleHolder{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task .noteHolder form{
+    display: flex;
+    flex-direction: column;
+}
+
+.task #title{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.task form{
+    position: relative;
+    height: 100%;
+}
+
+.task #deadline{
+    position: absolute;
+    bottom: 0;
+}
