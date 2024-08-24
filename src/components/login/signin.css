@@ -1,0 +1,112 @@
+
+#form{
+    padding: 2rem;
+    background: transparent;
+    width: 20rem;
+    z-index: -1;
+}
+
+#form p, form Link{
+    font-weight: 900;
+    font-size: 1.55rem;
+}
+
+#input{
+    background: transparent;
+    border: 2px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 1rem;
+    padding: 1rem;
+    font-weight: 900;
+    font-size: 1rem;
+    color: black;
+}
+
+#input::placeholder{
+    color: black;
+}
+
+#button{
+    background: white;
+    margin-top: 2rem;
+    border-radius: .5rem;
+    transform: scale(1.5);
+    padding: .5rem;
+    border: none;
+    box-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black;
+    transition: .5s;
+}
+
+#button:hover{
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+}
+
+@keyframes borderAnimation {
+    0%{
+        border-bottom: 1px dashed;
+    }
+    20%{
+        border-bottom: 1px dashed;
+        border-right: 1px dashed;
+    }
+    40%{
+        border-bottom: 1px solid;
+        border-top: 1px dashed;
+        border-right: 1px dashed;
+    }
+    60%{
+        border-bottom: 1px solid;
+        border-top: 1px dashed;
+        border-right: 1px solid;
+        border-left: 1px dashed;
+    }
+    80%{
+        border-bottom: 1px solid;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-left: 1px dashed;
+    }
+    100%{
+        border: 1px solid;
+    }
+}
+
+#cover{
+    background: blue;
+    left: 0;
+    width: 20rem;
+    padding: 2rem;  
+    z-index: 1;
+    height: 38rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cover p{
+  font-size: 2rem;
+}
+
+#cover button{
+    transform: scale(2);
+}
+
+#formHolder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black;
+    border-radius: 2rem;
+    width: 48rem;
+    transform: scale(.8);
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(1rem);
+    backdrop-filter: blur(1rem);
+}
+
+#cover img{
+    width: 20rem;
+    height: 20rem;
+}
