@@ -77,7 +77,7 @@ function Note(email) {
 
   return (
     <div className="note"> 
-      <h1>Notes</h1>
+      <h1 style={{color: 'white', marginLeft: '15px'}}>Notes</h1>
       <div className="notes">
         { 
           arr.map((note, index) => {  
@@ -95,20 +95,22 @@ function Note(email) {
             )
           })  
         }
-        <div className="noteHolder">
+        <div className="addFormHolder">
         { add ? 
           <form className='addForm' onSubmit={addNoteFun}>
-            <center>
-              <input required type="text" placeholder='Note title' onChange={(e) => {setTitle(e.target.value)}}/><br />
-              <textarea required type="text" placeholder='Note description' onChange={(e) => {setDesc(e.target.value)}}/><br />
-              <button><AiFillSave /></button>
-            </center>
-            <div><button onClick={() => {setAdd(false)}}><TbXboxX id='cross'/></button></div>
+            <br />
+              <label htmlFor="noteTitle"><h2 style={{padding : '0', margin : '0'}}>Note title</h2></label>
+              <input required type="text" id='noteTitle' onChange={(e) => {setTitle(e.target.value)}}/><br />
+              <label htmlFor="noteDescription"><h2 style={{padding : '0', margin : '0'}}>Note Description</h2></label>
+              <textarea required type="text" id='noteDescription' onChange={(e) => {setDesc(e.target.value)}}/><br />
+              <button id='addFormSave'><AiFillSave /></button>
+              <div><button onClick={() => {setAdd(false)}}><TbXboxX id='cross'/></button></div>
           </form>
           :    
           <div>
-            <center><button onClick={() => {setAdd(true)}}><FaPlus id='addPlus'/></button>
-            <h2>ADD NOTE</h2></center>
+            <center>
+              <button onClick={() => {setAdd(true)}} style={{display: "flex", padding: '0px'}}><h2>ADD NOTE</h2><FaPlus id='addPlus'/></button>
+            </center>
           </div>   
         }
         </div>

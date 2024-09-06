@@ -8,7 +8,7 @@ function Home() {
   const email = location.state.email
   
   return (
-    <div style={{background : 'Black', color : 'white'}}>
+    <div style={{colour: 'white'}}>
       <Task email={email}/>
       <Note email={email}/>
     </div>

@@ -40,25 +40,28 @@ function SignUp() {
   return (
     <>
         <div id="login" >
+        <center>
         <form method='POST' onSubmit={submit} id='form'>
             <div className="inputBox">
-                <SiGmail />
+                <i><SiGmail /></i>
                 <input id='input' type="email" required placeholder="EMail" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
             </div>
             <div className="inputBox">
-                <i onClick={() => {setShowPass(!showPass)}} style={{background: 'transparent', border: 'none', cursor:'pointer'}}>
+                <i onClick={() => {setShowPass(!showPass)}} style={{cursor:'pointer'}}>
                     { showPass ? <IoMdEyeOff /> : <IoMdEye />}
                 </i>
                 <input id='input' type={showPass ? 'text' : 'password'} required placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
             </div> 
             <div className="inputBox">
-                <i onClick={() => {setShowConPass(!showConPass)}} style={{background: 'transparent', border: 'none', cursor:'pointer'}}>
+                <i onClick={() => {setShowConPass(!showConPass)}} style={{cursor:'pointer'}}>
                     { showConPass ? <IoMdEyeOff /> : <IoMdEye />}
                 </i>
                 <input id='input' type={showConPass ? 'text' : 'password'} required placeholder="Confirm Password" value={conPassword} onChange={(e) => {setConPassword(e.target.value)}} />
             </div> 
-            <center><button type="submit" className="logbtn" id='button'>Sign up</button></center>      
-        </ form></div>
+            <center><button type="submit" className="logbtn" id='button'>Register</button></center>      
+        </ form>
+        </center>
+        </div>
     </>
   )
 }

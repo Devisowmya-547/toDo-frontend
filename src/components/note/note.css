@@ -44,8 +44,10 @@
 .note .notes .noteHolder{
     box-shadow: 0 0 10px white;
     margin: 10px;
-    padding: 10px;
-    background: rgb(58, 14, 14);
+    padding: 20px;
+    /* background: rgb(228, 139, 139); */
+    backdrop-filter: blur(20px);
+    color: white;
     width: 29%;
     border-radius: 20px;
     &:hover{
@@ -84,17 +86,27 @@
     height: 100%;
 }
 
-.note #addPlus{
-    margin-top: 10%;
-    font-size: 5rem;
-    border: none;
-    border-radius: 50%;
-    color: rgb(212, 212, 212);
+.note #deadline{
+    position: relative;
+    width: fit-content;
+    bottom: 0;
 }
 
-.note #cross{
+.note .status{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.note #addPlus{
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    color: rgb(0, 0, 0);
+}
+
+.note #addFormSave{
     position: absolute;
-    top: 1px;
+    top: 4px;
     right: 30px;
     &:hover{
         color: red;
@@ -112,15 +124,27 @@
     }
 }
 
+.note .addFormHolder{
+    position: absolute;
+    right: 10px;
+    border-radius: 15px;
+    padding: 5px 10px 5px;
+    background: white;
+}
+
+.note .addForm textarea{
+    width: 100%;
+    border: 1px solid black;
+}
+
 .note .addForm{
     position: relative;
+    padding: 10px;
 }
 
 .note .addForm input{
+    border: 1px solid black;
     font-size: larger;
+    color: black;
     margin: 5px;
-}
-
-.note textarea{
-    width: 100%;
 }

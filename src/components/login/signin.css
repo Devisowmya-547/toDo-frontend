@@ -1,27 +1,35 @@
-
 #form{
     padding: 2rem;
-    background: transparent;
-    width: 20rem;
+    background: rgb(224, 223, 223);
+    width: 25rem;
     z-index: -1;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    margin-top: 85px;
+    box-shadow: 0 0 10px white 0 0 20px white;
 }
 
 #form p, form Link{
-    font-weight: 900;
-    font-size: 1.55rem;
+    font-weight: 700;
+}
+
+i{
+    border: 2px solid black;
+    padding: 17px;
+    margin-right: 0;
+    border-right: none;
+    background: rgb(52, 34, 146);
+    color: white;
 }
 
 #input{
-    background: transparent;
     border: 2px solid black;
-    border-top: none;
-    border-left: none;
-    border-right: none;
     margin: 1rem;
     padding: 1rem;
     font-weight: 900;
     font-size: 1rem;
     color: black;
+    margin-left: 0;
 }
 
 #input::placeholder{
@@ -29,18 +37,19 @@
 }
 
 #button{
-    background: white;
+    background: rgb(52, 34, 146);
     margin-top: 2rem;
     border-radius: .5rem;
     transform: scale(1.5);
     padding: .5rem;
+    color: white;
     border: none;
-    box-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black;
+    box-shadow: 0 0 10px black, 0 0 20px black;
     transition: .5s;
 }
 
 #button:hover{
-    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+    box-shadow: 0 0 10px white, 0 0 20px white;
 }
 
 @keyframes borderAnimation {
