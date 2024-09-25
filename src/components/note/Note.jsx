@@ -6,16 +6,17 @@ import { AiFillSave } from "react-icons/ai";
 import { TbXboxX } from "react-icons/tb";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { PiNotepadBold } from "react-icons/pi";
 
-function Note(email) {
-  email = email.email;
+function Note() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const email = location.state;
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [add, setAdd] = useState(false);
   const [arr, setArr] = useState([
-    {title : "Title", desc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius nobis dolores facilis nulla quaerat placeat obcaecati aut quidem maiores, rem, beatae quisquam ipsum itaque nemo! Ab ducimus architecto quam quae."},
-    {title : "Title", desc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius nobis dolores facilis nulla quaerat placeat obcaecati aut quidem maiores, rem, beatae quisquam ipsum itaque nemo! Ab ducimus architecto quam quae."},
-    {title : "Title", desc : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius nobis dolores facilis nulla quaerat placeat obcaecati aut quidem maiores, rem, beatae quisquam ipsum itaque nemo! Ab ducimus architecto quam quae."}
+    {title : "Add a new Note", desc : "Add Note Description"}
   ])
   const [noteFlag, setNoteFlag] = useState(arr.map(() => ({ edit: false })));
 
@@ -75,11 +76,20 @@ function Note(email) {
     }
   }
 
+  function gotoTask(){
+    navigate('/task', {state : email})
+  }
+
   return (
     <div className="note"> 
-      <h1 style={{color: 'white', marginLeft: '15px'}}>Notes</h1>
+      <center><h1 style={{ marginLeft: '15px'}}>NOTES</h1></center>
+      <form className='addForm' onSubmit={addNoteFun}>
+        <button disabled={true} ><label htmlFor="noteTitle"><PiNotepadBold id='noteIcon'/></label></button>        
+        <input required type="text" id='noteTitle' onChange={(e) => {setTitle(e.target.value)}} placeholder='Add new Note'/><br />
+        <button id='addFormSave'><FaPlus id='addPlus'/></button>
+      </form>
       <div className="notes">
-        { 
+        {
           arr.map((note, index) => {  
             return(
               <div className="noteHolder" key={index}>          
@@ -93,28 +103,10 @@ function Note(email) {
                 {noteFlag[index].edit ? <textarea type='textarea' id='desc' value={desc} required onChange={(e) => {setDesc(e.target.value)}}/> : <p>{note.desc}</p>}
               </div>              
             )
-          })  
+          })
         }
-        <div className="addFormHolder">
-        { add ? 
-          <form className='addForm' onSubmit={addNoteFun}>
-            <br />
-              <label htmlFor="noteTitle"><h2 style={{padding : '0', margin : '0'}}>Note title</h2></label>
-              <input required type="text" id='noteTitle' onChange={(e) => {setTitle(e.target.value)}}/><br />
-              <label htmlFor="noteDescription"><h2 style={{padding : '0', margin : '0'}}>Note Description</h2></label>
-              <textarea required type="text" id='noteDescription' onChange={(e) => {setDesc(e.target.value)}}/><br />
-              <button id='addFormSave'><AiFillSave /></button>
-              <div><button onClick={() => {setAdd(false)}}><TbXboxX id='cross'/></button></div>
-          </form>
-          :    
-          <div>
-            <center>
-              <button onClick={() => {setAdd(true)}} style={{display: "flex", padding: '0px'}}><h2>ADD NOTE</h2><FaPlus id='addPlus'/></button>
-            </center>
-          </div>   
-        }
-        </div>
       </div> 
+      <button onClick={gotoTask} id='gotoNote'>Task</button>
     </div>
   );
 }

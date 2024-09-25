@@ -20,7 +20,7 @@ const Login = () => {
         .then(res =>{
             if(res.data.message === 'exist'){ 
                 alert('Logged in successfully')    
-                navigate('/home', {state : {email}})
+                navigate('/task', {state : email})
             }
             else{
                 alert(res.data.message)

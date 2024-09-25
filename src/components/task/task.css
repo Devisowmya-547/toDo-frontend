@@ -10,9 +10,15 @@
     position: relative;
 }
 
-.task .header h1{
+.task h1{
     padding: 0;
     margin: 0;
+    font-size: 50px;
+    color: transparent;
+    background-image: url(https://i.pinimg.com/originals/3e/81/79/3e8179c305605896b1f82db0005ad199.gif);
+    background-size: contain;
+    font-weight: 900;
+    background-clip: text;
 }
 
 .task button{
@@ -58,10 +64,10 @@
 .task .titleHolder button{
     background: none;
     border: none;
-    color: blue;
+    color: white;
     font-size: 1.2rem;
     &:hover{
-        color: red;
+        color: black;
     }
 }
 
@@ -97,55 +103,68 @@
     margin-bottom: 20px;
 }
 
+.task #noteIcon{
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+}
+
 .task #addPlus{
     font-size: 1.5rem;
     border: none;
     border-radius: 50%;
-    color: rgb(0, 0, 0);
 }
 
-.task #addFormSave{
-    position: absolute;
-    top: 4px;
-    right: 30px;
-    &:hover{
-        color: red;
-    }
-}
-
-.task .addForm button{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    color: blue;
-    font-size: 1.2rem;
-    &:hover{
-        color: green;
-    }
-}
-
-.task .addFormHolder{
-    position: absolute;
-    right: 10px;
-    top: 20px;
-    border-radius: 15px;
-    padding: 5px 10px 5px;
-    background: white;
+.task .addForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .task .addForm textarea{
     width: 100%;
     border: 1px solid black;
+    &::placeholder{
+        color: bisque;
+    }
 }
 
 .task .addForm{
     position: relative;
     padding: 10px;
+    z-index: 999;
+}
+
+.task .addForm button{
+    border: 2px black solid ;
+    padding: 5px;
+    background: rgb(23, 5, 128);
+    color: white;
 }
 
 .task .addForm input{
-    border: 1px solid black;
-    font-size: larger;
-    color: black;
+    border: 2px solid black;
+    font-size: x-large;
+    padding: 5px;
     margin: 5px;
+    &::placeholder{
+        color: bisque;
+    }
+    &:focus{
+        outline: none;
+    }
+}
+
+.task #gotoNote{
+    font-size: 30px;
+    font-weight: 700;
+    background: white;
+    width: fit-content;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 25px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
 }

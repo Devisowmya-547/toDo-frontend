@@ -6,17 +6,21 @@ import { AiFillSave } from "react-icons/ai";
 import { TbXboxX } from "react-icons/tb";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { PiNotepadBold } from "react-icons/pi";
 
-function Task(email) {
-  email = email.email;
+function Task() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const email = location.state;
+  console.log(email)
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [deadline, setDeadline] = useState("");
   const [completed, setCompleted] = useState();
-  const [add, setAdd] = useState(false);
   const [arr, setArr] = useState([
-    {title : "Add your first task", desc : "Click on 'ADD TASK' to add your first task"}
-    ])
+    {title : "Add new Task", desc : "Add new Task description", deadline: "Set deadline"}
+  ])
   const [taskFlag, setTaskFlag] = useState(arr.map(() => ({ edit: false })));
 
   useEffect(() => {
@@ -77,9 +81,18 @@ function Task(email) {
     }
   }
 
+  function gotoNote(){
+    navigate('/note', {state : email})
+  }
+
   return (
     <div className="task"> 
-      <h1 style={{color: 'white', marginLeft: '15px'}}>Tasks</h1>
+      <center><h1 style={{ marginLeft: '15px'}}>TASKS</h1></center>
+      <form className='addForm' onSubmit={addTaskFun}>
+        <button disabled={true} ><label htmlFor="taskTitle"><PiNotepadBold id='noteIcon'/></label></button>        
+        <input required type="text" id='taskTitle' onChange={(e) => {setTitle(e.target.value)}} placeholder='Add new Task'/><br />
+        <button id='addFormSave'><FaPlus id='addPlus'/></button>
+      </form>
       <div className="notes">
         {
           arr.map((task, index) => {  
@@ -93,35 +106,16 @@ function Task(email) {
                   </div>
                 </div>
               <form >
-                {taskFlag[index].edit ? <textarea type='textarea' id='desc' value={desc} required onChange={(e) => {setDesc(e.target.value)}}/> : <p>{task.desc}</p>}
+                {taskFlag[index].edit ? <textarea type='textarea' id='desc' value={desc} required onChange={(e) => {setDesc(e.target.value)}} placeholder='Add Description'/> : <p>{task.desc}</p>}
                 {taskFlag[index].edit ? <div className='status'><label htmlFor="status">Finished </label><input type='checkbox' id='status' checked={completed} onChange={(e) => {setCompleted(!completed)}} /></div> : <p>status : {task.done ? "Finished" : "Not finished"}</p>}
-                {taskFlag[index].edit ? <input type='date' id='deadline' value={deadline} required onChange={(e) => {setDeadline(e.target.value)}}/> : <p>deadline : {task.deadline}</p>}
+                {taskFlag[index].edit ? <input type='date' id='deadline' value={deadline} required onChange={(e) => {setDeadline(e.target.value)}} placeholder='Add Deadline'/> : <p>deadline : {task.deadline}</p>}
               </form>
               </div>              
             )
           })
         }
-        <div className="addFormHolder">
-        { add ? 
-          <form className='addForm' onSubmit={addTaskFun}>
-            <br />
-              <label htmlFor="taskTitle"><h2 style={{padding : '0', margin : '0'}}>Task title</h2></label>
-              <input required type="text" id='taskTitle' onChange={(e) => {setTitle(e.target.value)}}/><br />
-              <label htmlFor="taskDescription"><h2 style={{padding : '0', margin : '0'}}>Task Description</h2></label>
-              <textarea required type="text" id='taskDescription' onChange={(e) => {setDesc(e.target.value)}}/><br />
-              <label htmlFor='addDeadline'><h2 style={{padding : '0', margin : '0'}}>Deadline : </h2></label><input type="date" required placeholder='deadline' id='addDeadline' onChange={(e) => {setDeadline(e.target.value)}}/><br />
-              <button id='addFormSave'><AiFillSave /></button>
-              <div><button onClick={() => {setAdd(false)}}><TbXboxX id='cross'/></button></div>
-          </form>
-          :    
-          <div>
-            <center>
-              <button onClick={() => {setAdd(true)}} style={{display: "flex", padding: '0px'}}><h2>ADD TASK</h2><FaPlus id='addPlus'/></button>
-            </center>
-          </div>   
-        }
-        </div>
       </div> 
+      <button onClick={gotoNote} id='gotoNote'>Notes</button>
     </div>
   );
 }
