@@ -24,7 +24,9 @@ function Note() {
     async function fetchData(){
       await axios.get(`${process.env.REACT_APP_BASE_URL}/note/getNotes/${email}`)
       .then((res) => {
-        setArr(res.data.notes[0].notes)
+        const notes = res.data.notes[0].notes
+        setArr(notes)
+        setNoteFlag(notes.map(() => ({ edit: false })));
       })
       .catch((err) => {
         console.log(err)
