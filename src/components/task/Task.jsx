@@ -27,7 +27,9 @@ function Task() {
     async function fetchData(){
       await axios.get(`${process.env.REACT_APP_BASE_URL}/task/getTasks/${email}`)
       .then((res) => {
-        setArr(res.data.tasks[0].tasks)
+        const tasks = res.data.tasks[0].tasks
+        setArr(tasks)
+        setTaskFlag(tasks.map(() => ({ edit: false })));
       })
       .catch((err) => {
         console.log(err)
